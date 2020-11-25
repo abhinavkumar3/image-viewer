@@ -1,0 +1,21 @@
+.app-header {
+    background-color: #263238;
+    height: 36px;
+    padding: 8px 32px 8px 16px;
+    font-size: 18px;
+    color: #fff;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.red {
+    color: red;
+}
+
+.dispNone {
+    display: none;
+}
+
+.dispBlock {
+    display: block;
+}
