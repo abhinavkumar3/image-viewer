@@ -1,9 +1,3 @@
-
-.card-content{
-    padding: 50px;
-    width: 300;
-}
-
 .dispNone {
     display: none;
 }
@@ -14,4 +8,19 @@
 
 .red {
     color: red;
+}
+
+.centerAlign{
+    justify-content: center;
+    display: flex;
+    margin-top: 50px;
+    shape-outside: content-box;   
+}
+
+.card {
+    width: 45%;
+}
+
+.cardContent {
+    padding: 20px;
 }
