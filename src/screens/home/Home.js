@@ -1,9 +1,16 @@
-import React, {Component} from 'react';
+import React, { Component, useState, useEffect, useContext } from 'react';
 import './Home.css';
 import Login from '../../screens/login/Login';
+import PROFILE_ICON from "../../assets/profile_icon.png";
+
+const { searchKey } = useContext(AppContext);
+const [imagesResponse, setImagesResponse] = useState([]);
+const [filteredData, setFilteredData] = useState([]);
+const [comments, setComments] = useState({});
+const [profileIcon] = useState(PROFILE_ICON);
 
 
-class Home extends Component {
+export default class Home extends Component {
 
     constructor() {
         super();
@@ -15,32 +22,18 @@ class Home extends Component {
         }
     }
 
-
-    loginClickHandler = () => {
-        this.state.username === "" ? this.setState({ usernameRequired: "dispBlock" }) : 
-        this.setState({ usernameRequired: "dispNone" });
-        this.state.password === "" ? this.setState({ passwordRequired: "dispBlock" }) : 
-        this.setState({ passwordRequired: "dispNone" });
-    }
-
-    inputUsernameChangeHandler = (e) => {
-        this.setState({ username: e.target.value });
-    }
-
-    inputPasswordChangeHandler = (e) => {
-        this.setState({ password: e.target.value });
-    }
-
     render() {
         return (
-            <div>
-                <div className="app-header">
-                    Image Viewer
-                </div>
-                <Login/>
+            <div className="home-container">
+                <Card key={item.id}>
+                    <CardHeader
+                        avatar={<Avatar src={profileIcon} />}
+                        title={item.username}
+                        subheader={formatDate(item.timestamp)} />
+                    <CardContent>
+                    </CardContent>
+                </Card>
             </div>
         )
     }
-}
-
-export default Home; 
+}; 

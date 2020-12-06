@@ -10,17 +10,17 @@
     color: red;
 }
 
-.centerAlign{
+.login-card{
     justify-content: center;
     display: flex;
     margin-top: 50px;
     shape-outside: content-box;   
 }
 
-.card {
+.card-parent {
     width: 45%;
 }
 
-.cardContent {
+.card-content {
     padding: 20px;
 }
