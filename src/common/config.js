@@ -1,17 +1,15 @@
 var Config =
 {
     "login": {
-        "username": "cactus_dennis",
-        "password": "Home@529"
+        "username": "admin",
+        "password": "admin"
     },
     "auth": {
-        "access-token": "IGQVJWbUJKUE5LZAnpoVHpUSzZAhZAUtJc2J0TkUtTUVPT2Rja0xqMkJmclFWOVp4ck9OQS1qakhVdVk5aWZAsZAWRobnVhNUZA5R2o5RW41WE5Qekd6OFRpTTZABdHJES3Y1RVpOcU90R1NTNTFSU050MkRYZAwZDZD"
+        "access-token": "IGQVJVazNtNEVsX3ctbXpGaS1JbVMzYk91VlVCUFpXODltQU0zOGpFR0hyOW4xeThkcHI2aFE1REVOaTJBTVdTbWEtb0RSU0ZArZA0hqdWplX3Q2eFJDLVl4SmhvenRFQmNTdGptLTNiZAUV1NFlaMzI2ZAwZDZD"        
     },
     "api": {
         mediaUrl: "https://graph.instagram.com/me/media?fields=id,caption",
         userUrl: "https://graph.instagram.com/me/media?fields=id,media_type,media_url,username,timestamp,caption"
     }
-    // mediaIdUrl:"https://graph.instagram.com/me/media?fields=id,caption",
-    // userMediaUrl:"https://graph.instagram.com/me/media?fields=id,media_type,media_url,username,timestamp,caption",
 };
 export default Config;

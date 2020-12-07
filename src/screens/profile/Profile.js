@@ -133,10 +133,10 @@ class Profile extends Component {
                         data:mediaInfo,
                         filteredData:mediaInfo,
                         username: mediaInfo[0].username,
-                        full_name: 'UpGrad Education',
+                        full_name: 'Testing Upgrad',
                         posts: mediaInfo.length,
-                        follows: '10',
-                        followed_by: '20',
+                        follows: '0',
+                        followed_by: '0',
                         mediaData: mediaInfo,
                         comments: comments
 
@@ -147,52 +147,6 @@ class Profile extends Component {
             console.log('error user data',error);
         });
     }
-    // getUserInfo = () => {
-    //     let that = this;
-    //     let url = `${constants.userMediaUrl}&access_token=${sessionStorage.getItem('access-token')}`;
-    //     return fetch(url, {
-    //         method: 'GET',
-    //     }).then((response) => {
-    //         return response.json();
-    //     }).then((jsonResponse) => {
-    //         that.setState({
-    //             profile_picture: profileImage,
-    //             username: jsonResponse.data[0].username,
-    //             full_name: 'UpGrad Education',
-    //             posts: jsonResponse.data.length,
-    //             follows: '10',
-    //             followed_by: '20',
-    //         });
-    //     }).catch((error) => {
-    //         console.log('error user data',error);
-    //     });
-    // }
-
-    // getMediaData = () => {
-    //     let that = this;
-    //     let url = `${constants.userMediaUrl}&access_token=${sessionStorage.getItem('access-token')}`;
-    //     return fetch(url,{
-    //         method: 'GET',
-    //     }).then((response) => {
-    //         return response.json();
-    //     }).then((jsonResponse) => {
-    //         const comments ={};
-    //         const media = jsonResponse.data;
-    //         media.forEach(m=>{
-    //             m['username'] = m.username;
-    //             m['likes_count'] =2;
-    //             if (sessionStorage.getItem(m.id+'comment') !== null) {
-    //                 comments[m.id] = JSON.parse(sessionStorage.getItem(m.id+'comment'));
-    //             }
-    //         })
-    //         that.setState({
-    //             mediaData: jsonResponse.data,
-    //             comments:comments
-    //         });
-    //     }).catch((error) => {
-    //         console.log('error media data',error);
-    //     });
-    // }
 
     handleOpenEditModal = () => {
         this.setState({ editOpen: true });
