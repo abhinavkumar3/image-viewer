@@ -1,58 +1,147 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import './Header.css';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import InputBase from '@material-ui/core/InputBase';
+import {withStyles} from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
-import Icon from "../../assets/profile_icon.png";
-import {Menu, MenuItem} from '@material-ui/core';
-import Input from '@material-ui/core/Input';
-import IconButton from '@material-ui/core/IconButton'
+import Avatar from '@material-ui/core/Avatar';
+import IconButton from '@material-ui/core/IconButton';
+import MenuItem from '@material-ui/core/MenuItem';
+import Popover from '@material-ui/core/Popover';
+import { Link } from 'react-router-dom';
 
+const styles = theme => ({
+  grow: {
+    flexGrow: 1
+  },
+  search: {
+    position: 'relative',
+    borderRadius: '4px',
+    backgroundColor: '#c0c0c0',
+    marginLeft: 0,
+    width: '300px',
+  },
+  searchIcon: {
+    width: theme.spacing.unit * 4,
+    height: '100%',
+    position: 'absolute',
+    pointerEvents: 'none',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    color:'#000000'
+  },
+  inputInput: {
+    paddingTop: theme.spacing.unit,
+    paddingRight: theme.spacing.unit,
+    paddingBottom: theme.spacing.unit,
+    paddingLeft: theme.spacing.unit * 4,
+    transition: theme.transitions.create('width'),
+    width: '100%',
+    [theme.breakpoints.up('sm')]: {
+      width: 120,
+      '&:focus': {
+        width: 200
+      }
+    }
+  },
+  avatar: {
+    width: 50,
+    height: 50,
+  },
+  appHeader:{
+    backgroundColor:'#263238'
+  },
+  hr:{
+    height:'1.5px',
+    backgroundColor:'#f2f2f2',
+    marginLeft:'5px',
+    marginRight:'5px'
+  }
+})
 
-export default class Header extends Component {
-  constructor() {
-    super();
+class Header extends Component{
+
+  constructor(props){
+    super(props);
     this.state = {
-      menuIsOpen: false,
-      isLoggedIn: true,
+      anchorEl: null,
     };
   }
 
-  //on entering the value in search field
-  onSearchChangeHandler = (event) => {
-    this.props.onSearchTextChange(event.target.value);
+  render(){
+    const {classes,screen} = this.props;
+    return (<div>
+        <AppBar className={classes.appHeader}>
+          <Toolbar>
+            {(screen === "Login" || screen === "Home") && <span className="header-logo">Image Viewer</span>}
+            {(screen === "Profile") && <Link style={{ textDecoration: 'none', color: 'white' }} to="/home"><span className="header-logo">Image Viewer</span></Link>}
+            <div className={classes.grow}/>
+            {(screen === "Home") &&
+              <div className={classes.search}>
+                <div className={classes.searchIcon}>
+                  <SearchIcon />
+                </div>
+                <InputBase onChange={(e)=>{this.props.searchHandler(e.target.value)}} placeholder="Search…" classes={{
+                    input: classes.inputInput
+                  }}/>
+              </div>
+            }
+            {(screen === "Home" || screen === "Profile")  &&
+              <div>
+                <IconButton onClick={this.handleClick}>
+                  <Avatar alt="Profile Pic" src={this.props.userProfileUrl} className={classes.avatar} style={{border: "1px solid #fff"}}/>
+                </IconButton>
+                <Popover
+                  id="simple-menu"
+                  anchorEl={this.state.anchorEl}
+                  open={Boolean(this.state.anchorEl)}
+                  onClose={this.handleClose}
+                  anchorOrigin={{
+                    vertical: 'bottom',
+                    horizontal: 'left',
+                  }}
+                  transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'left',
+                  }}>
+                    <div style={{padding:'5px'}}>
+                      { (screen === "Home") &&
+                        <div>
+                          <MenuItem onClick={this.handleAccount}>My Account</MenuItem>
+                          <div className={classes.hr}/>
+                        </div>
+                      }
+                      <MenuItem onClick={this.handleLogout}>Logout</MenuItem>
+                    </div>
+                </Popover>
+              </div>
+            }
+          </Toolbar>
+        </AppBar>
+    </div>)
   }
 
-  //on clicking on Logout menu option
-  onClickLogout = (event) => {
-    //Access token to be cleared
-    sessionStorage.removeItem("access-token");
+  handleClick = (event) =>{ 
     this.setState({
-      isLoggedIn: false
+      anchorEl: event.currentTarget
     })
   }
 
-  render() {
-    return (
-      <div>
-        <div className="app-header">
-          <span href='/home' className="app-logo">Image Viewer</span>
-          <span className="header-searchbox">
-            <SearchIcon id="search-icon"></SearchIcon>
-            <Input placeholder="Search…" onChange={this.onSearchChangeHandler} />
-          </span>
-        </div>
-        <div>
-          <IconButton>
-            <img src={Icon} className="profile-icon" alt="user" />
-          </IconButton>
-          <Menu>
-            {window.location.pathname === "/home" && (
-              <MenuItem>My Account</MenuItem>
-            )}
-            {window.location.pathname === "/home" && <hr />}
-            <MenuItem className="menu-items" onClick={this.onClickLogout} >Logout</MenuItem>
-          </Menu>
-        </div>
-      </div>
-    )
+  handleAccount = ()=>{
+    this.props.handleAccount();
+    this.handleClose();
+  }
+
+  handleLogout = ()=>{
+    this.props.handleLogout();
+    this.handleClose();
+  }
+
+  handleClose = () =>{
+    this.setState({ anchorEl: null });
   }
 }
+
+export default withStyles(styles)(Header)

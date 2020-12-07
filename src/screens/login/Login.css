@@ -1,5 +1,5 @@
 .dispNone {
-    display: none;
+    display:none;
 }
 
 .dispBlock {
@@ -9,18 +9,7 @@
 .red {
     color: red;
 }
-
-.login-card{
-    justify-content: center;
-    display: flex;
-    margin-top: 50px;
-    shape-outside: content-box;   
-}
-
-.card-parent {
-    width: 45%;
-}
-
-.card-content {
-    padding: 20px;
+.main-container{
+  display: flex;
+  flex-direction: column;
 }

@@ -1,69 +1,27 @@
-.app-header {
-    background-color: #263238;
-    height: 36px;
-    padding: 8px 32px 8px 16px;
-    font-size: 18px;
-    color: #fff;
-    text-align: left;
-    vertical-align: middle;
+.home-item-main-container{
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+}
+.home-item-profile-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+.horizpontal-rule{
+  margin:10px;
+  background-color:"#FF5722"
+}
+.home-item-profile-head{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
 }
 
-.red {
-    color: red;
+.row{
+  display: flex;
+  flex-direction: row;
 }
-
-.dispNone {
-    display: none;
-}
-
-.dispBlock {
-    display: block;
-}
-
-.login-card {
-    text-align: left;
-    vertical-align: middle;
-}
-
-.text-header {
-    text-transform: capitalize;
-    font-size: large;
-}
-
-.card {
-    width: 320px;
-    padding: 20px;
-    border: 1px solid #c9c9c9;
-}
-
-.home-container {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  .home-container .MuiCard-root {
-    width: calc(100vw/2 - 40px);
-    margin: 20px;
-  }
-  
-  .home-container .MuiCard-root img {
-    width: 100%;
-  }
-  .username-date {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding-left: 20px;
-    height: 42px;
-  }
-  
-  .hashtag {
-    color: blue;
-    cursor: pointer;
-    padding-right: 10px;
-  }
-  .likes-container {
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    padding-top: 20px;
-  }
